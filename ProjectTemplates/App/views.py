@@ -13,3 +13,16 @@ def index(request):
         obj.save()
         
     return render(request, 'index.html')
+
+def readData(request):
+    data = request.POST.get('id')
+    
+    try:
+        data_send = data
+        SQLExtractor = Details.objects.get(id=data_send)
+        data = (SQLExtractor.name, SQLExtractor.type)
+    except:
+        data = data
+        
+    print(data)
+    return render(request, 'readData.html', {'data': data})
