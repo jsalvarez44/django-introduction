@@ -1,13 +1,15 @@
+import re
 from django.shortcuts import render
+from .models import Details
 
-def simpleRender(request):
-    data = request.POST.get('name')
-    try:
-        data_clone = data
+def index(request):
+    if request.method == 'POST':
+        type = request.POST['type']
+        name = request.POST['name']
         
-        if data_clone == 'Hello':
-            data = 'Hi, how are you?'
-    except:
-        data = data
-    
-    return render(request, 'index.html', {'data': data})
+        obj = Details()
+        obj.type = type
+        obj.name = name
+        obj.save()
+        
+    return render(request, 'index.html')

@@ -2,13 +2,15 @@
 <html>
   <head></head>
   <body>
-    <form method="POST">
+    <form action="" method="POST">
       {% csrf_token %}
-      Data: <input type="text" name="name">
-      <button type="submit">Send</button>
+      <h1>Form</h1>
+      <input type="text" name="type" placeholder="Enter your type" />
+      <br />
+      <input type="text" name="name" placeholder="Enter your name" />
+      <br />
+      <input type="submit" value="Add data" />
     </form>
-    <h3>Information:</h3>
-    <h3>{{data}}</h3>
   </body>
 </html>
 {% endblock content %}
